@@ -12,7 +12,7 @@ body {
  margin: 0;
  padding: 0;
  height: 100vh; /* Ocupa toda la pantalla */
- background-color: #000; /* Fondo negro */
+ background: radial-gradient(circle at center, #1a1a1a, #000);
 }
 
 /* ============================= */
@@ -86,6 +86,11 @@ h2 {
   left: 0;
 }
 
+.cardFront, .cardInside {
+ backdrop-filter: blur(10px);
+ background: rgba(255, 255, 255, 0.1);
+}
+
 /* ============================= */
 /* PARTE TRASERA */
 /* ============================= */
@@ -150,7 +155,20 @@ h2 {
  width: 85px;
  height: 95px;
  border-radius: 50%;
+ box-shadow: inset -10px -15px 20px rgba(0,0,0,0.2),
+             inset 10px 10px 20px rgba(255,255,255,0.3);
 }
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.balloonOne { animation: float 3s ease-in-out infinite; }
+.balloonTwo { animation: float 4s ease-in-out infinite; }
+.balloonThree { animation: float 3.5s ease-in-out infinite; }
+.balloonFour { animation: float 4.5s ease-in-out infinite; }
 
 /* Posición y color de cada globo */
 .balloonOne {
@@ -252,6 +270,8 @@ h2 {
               90px 5px #ca9eb8;
 }
 
+
+
 /* Vela */
 .plate:before {
   content: "";
@@ -296,16 +316,98 @@ h2 {
     animation: flame 30ms 200ms ease-in infinite alternate;
 }
 
+
+.flame {
+ background: radial-gradient(circle, #ff0 0%, #ff5100 60%, transparent 80%);
+ box-shadow: 
+   0 0 10px #ff7300,
+   0 0 20px #ff4500,
+   0 0 30px #ff0000;
+}
 /* Animación de la flama */
-@keyframes flame {
-    0%{ transform: rotate(-45deg); }
-    20%{ transform: rotate(-50deg); }
-    40%{ transform: rotate(-44deg); }
-    60%{ transform: rotate(-45deg) scaleY(1.04); }
-    80%{ transform: rotate(-47deg) scaleY(0.92); }
-    100%{ transform: rotate(-50deg); }
+@keyframes flameMove {
+  0% {
+    transform: scaleY(1) scaleX(1) rotate(-45deg);
+  }
+  25% {
+    transform: scaleY(1.2) scaleX(0.9) rotate(-48deg);
+  }
+  50% {
+    transform: scaleY(0.9) scaleX(1.1) rotate(-43deg);
+  }
+  75% {
+    transform: scaleY(1.1) scaleX(0.95) rotate(-47deg);
+  }
+  100% {
+    transform: scaleY(1) scaleX(1) rotate(-45deg);
+  }
+}
+@keyframes flameFlicker {
+  0% {
+    box-shadow:
+      0 0 5px #ff6600,
+      0 0 10px #ff3300,
+      0 0 20px #ff0000;
+  }
+  100% {
+    box-shadow:
+      0 0 10px #ffcc00,
+      0 0 20px #ff6600,
+      0 0 30px #ff0000;
+  }
 }
 
+.smoke {
+  position: absolute;
+  top: -110px;
+  left: 60px;
+  width: 10px;
+  height: 20px;
+  background: rgba(200,200,200,0.2);
+  border-radius: 50%;
+  filter: blur(5px);
+  animation: smokeRise 2s infinite ease-in;
+  opacity: 0;
+}
+
+.birthdayCard:hover .smoke {
+  opacity: 1;
+}
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* cada partícula */
+.particles span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  filter: blur(1px);
+}
+
+/* se activan al abrir tarjeta */
+.birthdayCard:hover ~ .particles span {
+  animation: sparkle 3s infinite ease-in-out;
+}
+
+@keyframes moveParticles {
+ from {
+   transform: translateY(0);
+ }
+ to {
+   transform: translateY(-200px);
+ }
+}
 /* ============================= */
 /* INTERIOR DE LA TARJETA */
 /* ============================= */
@@ -367,6 +469,10 @@ p {
 /* ============================= */
 /* EFECTO HOVER (RESPONSABLE DE LA APERTURA) */
 /* ============================= */
+
+.birthdayCard {
+ box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
 
 .birthdayCard:hover {
  transform: perspective(2500px) rotate(5deg);

@@ -1,117 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-  <!-- Configuración básica del documento -->
-  <meta charset="UTF-8" /> <!-- Permite usar acentos y caracteres especiales -->
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> <!-- Compatibilidad con navegadores -->
-  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Responsive -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tarjeta de Cumpleaños</title>
 
-  <title>Greeting Card</title>
-
-  <!-- Archivo de estilos externo -->
   <link rel="stylesheet" href="s.css" />
 
-  <!-- Meta tags para compartir en redes (Facebook, Twitter, etc.) -->
-  <meta name="twitter:card" content="summary" />
-  <meta property="og:title" content="Wish Card" />
-  <meta property="og:site_name" content="Wish Card" />
-  <meta property="og:url" content="https://wishcard.free.nf/C2.php?code=8eDGZEQI" />
-  <meta property="og:image" content="https://wishcard.free.nf/bgimg/wishcard.jpg" />
-  <meta property="og:image:width" content="402" />
-  <meta property="og:image:height" content="548" />
-  <meta property="og:type" content="website" />
-
-  <!-- Evita que la página sea indexada por Google -->
+  <!-- SEO / Compartir -->
   <meta name="robots" content="noindex,nofollow">
 </head>
 
 <body>
-    
-    
-    <!-- Musica de cumpleaños -->
+
+<!-- 🎵 Música -->
 <audio id="music" loop>
   <source src="cepillin.mp3" type="audio/mpeg">
 </audio>
-    
-  <!-- Texto simple fuera de la tarjeta -->
-  <h2>Hi</h2>
 
-  <!-- Contenedor principal -->
-  <div class="body">
+<!-- ✨ Partículas / efecto visual -->
+<div class="particles"></div>
 
-    <!-- Contenedor de toda la tarjeta -->
-    <div class="birthdayCard">
+<h2>Hi</h2>
 
-      <!-- Parte que contiene la animación de apertura -->
-      <div class="card">
+<div class="body">
 
-        <!-- Contenedor interno que se rota (flip 3D con CSS) -->
-        <div class="card-inner">
+  <div class="birthdayCard" id="card">
 
-          <!-- PARTE FRONTAL DE LA TARJETA -->
-          <div class="cardFront">
+    <div class="card">
+      <div class="card-inner">
 
-            <!-- Título frontal -->
-            <h3 id="title" class="happy">
-              Feliz Cumple 🎂
-            </h3>
+        <!-- 🎂 FRENTE -->
+        <div class="cardFront">
 
-            <!-- Globos decorativos (hechos con CSS) -->
-            <div class="balloons">
-              <div class="balloonOne"></div>
-              <div class="balloonTwo"></div>
-              <div class="balloonThree"></div>
-              <div class="balloonFour"></div>
-            </div>
+          <h3 class="happy">
+            Feliz Cumpleaños
+          </h3>
 
-            <!-- Pastel -->
-            <div class="plate">
-              <div class="cake"></div> <!-- Base del pastel -->
-              <div class="flame"></div> <!-- Vela/flama -->
-            </div>
-
+          <!-- Globos -->
+          <div class="balloons">
+            <div class="balloonOne"></div>
+            <div class="balloonTwo"></div>
+            <div class="balloonThree"></div>
+            <div class="balloonFour"></div>
           </div>
 
-          <!-- PARTE TRASERA DE LA TARJETA -->
-          <div class="card-back">
-            <!-- GIF decorativo -->
-            <img src="bgimg/birthday.gif" loading="lazy">
+          <!-- Pastel -->
+          <div class="plate">
+            <div class="cake"></div>
+            <div class="flame"></div>
+            <div class="smoke"></div> <!-- 🔥 NUEVO -->
           </div>
 
         </div>
-      </div>
 
-      <!-- CONTENIDO INTERNO (mensaje al abrir la tarjeta) -->
-      <div class="cardInside">
-
-        <!-- Título interno -->
-        <h3 id="title" class="back">
-          Feliz Cumpleaños 🎂
-        </h3>
-
-        <!-- Nombre de la persona -->
-        <p id="title">
-          Diana
-        </p>
-
-        <!-- Mensaje personalizado -->
-        <p id="desc">
-          Pasatela bonito 
-        </p>
-
-        <!-- Firma -->
-        <p id="name" class="name">
-          Cris
-        </p>
+        <!-- 🎬 BACK -->
+        <div class="card-back">
+          <img src="bgimg/birthday.gif" loading="lazy">
+        </div>
 
       </div>
+    </div>
+
+    <!-- 💌 INTERIOR -->
+    <div class="cardInside">
+
+      <h3 class="back">
+        Feliz Cumpleaños 🎂
+      </h3>
+
+      <p class="person-name">
+        Diana
+      </p>
+
+      <p id="desc">
+        Pásatela bonito 💖
+      </p>
+
+      <p class="name">
+        Cris
+      </p>
 
     </div>
+
   </div>
-
-
+</div>
 
 <script src="l.js"></script>
+
 </body>
 </html>
