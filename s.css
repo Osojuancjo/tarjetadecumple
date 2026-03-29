@@ -1,0 +1,408 @@
+/* ============================= */
+/* CONFIGURACIÓN GLOBAL */
+/* ============================= */
+
+body, html {
+ overflow-y: hidden; /* Oculta scroll vertical */
+ overflow-x: auto;   /* Permite scroll horizontal */
+ transition: all .8s; /* Transiciones suaves globales */
+}
+
+body {
+ margin: 0;
+ padding: 0;
+ height: 100vh; /* Ocupa toda la pantalla */
+ background-color: #000; /* Fondo negro */
+}
+
+/* ============================= */
+/* CONTENEDOR PRINCIPAL */
+/* ============================= */
+
+.body {
+ position: absolute;
+ top: 30%;
+ left: 50%;
+ transform: translate(-50%, -50%); /* Centrado */
+ transition: transform 0.5s ease;
+ margin-top: 100px;
+ z-index: 3;
+}
+
+/* Texto "Hi" con animación de colores */
+h2 {
+ animation: 1s blink linear infinite;
+ display: flex;
+ justify-content: center;
+}
+
+/* ============================= */
+/* TARJETA PRINCIPAL */
+/* ============================= */
+
+.birthdayCard {
+ position: relative;
+ width: 250px;
+ height: 350px;
+ cursor: pointer; /* Indica que es clickeable */
+ transform: perspective(2500px); /* Da profundidad 3D */
+ transition: 1s;
+}
+
+/* Mensaje de error (no siempre usado) */
+#UrlError{
+  margin: 100px 30px;
+  color: red;
+}
+
+/* ============================= */
+/* ESTRUCTURA DE LA TARJETA */
+/* ============================= */
+
+.card {
+  width: 250px;
+  height: 350px;
+}
+
+/* Contenedor que rota para hacer el efecto flip */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d; /* Permite 3D */
+  transform-origin: left; /* Se abre desde la izquierda */
+  transition: transform 0.8s;
+  z-index: 5;
+}
+
+/* Caras de la tarjeta */
+.cardFront,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Oculta el lado trasero */
+  top: 0;
+  left: 0;
+}
+
+/* ============================= */
+/* PARTE TRASERA */
+/* ============================= */
+
+.card-back {
+  background: white;
+  transform: rotateY(180deg); /* Se voltea */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid gold;
+  border-right: 2px dashed gold;  
+  background: linear-gradient(280deg, #f18396, #a500f1);
+}
+
+.card-back img {
+  width: 95%;
+  height: 95%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* ============================= */
+/* PARTE FRONTAL */
+/* ============================= */
+
+.cardFront {
+ position: absolute;
+ background-color: #F7879A;
+ width: 250px;
+ height: 350px;
+ overflow: hidden;
+ transform-origin: left;
+ box-shadow: inset 100px 20px 100px rgba(0, 0, 0, .2),
+             30px 0 50px rgba(0, 0, 0, 0.4);
+ transition: .6s;
+ border: 2px solid gold;
+}
+
+/* Título frontal */
+.happy {
+ font-family: Tahoma, sans-serif;
+ text-align: center;
+ margin: 30px;
+ background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+}
+
+/* ============================= */
+/* GLOBOS */
+/* ============================= */
+
+.balloons {
+ position: absolute;
+}
+
+/* Forma base de globos */
+.balloonOne,
+.balloonTwo,
+.balloonThree,
+.balloonFour {
+ position: absolute;
+ width: 85px;
+ height: 95px;
+ border-radius: 50%;
+}
+
+/* Posición y color de cada globo */
+.balloonOne {
+ background-color: rgb(239, 71, 111, 0.7);
+ left: -10px;
+ top: 50px;
+}
+
+.balloonTwo {
+ background-color: rgb(6, 214, 160, 0.7);
+ left: 50px;
+ top: 20px;
+}
+
+.balloonThree {
+ background-color: rgb(255, 209, 102, 0.7);
+ left: 110px;
+ top: 50px;
+}
+
+.balloonFour {
+ background-color: rgb(17, 138, 178, 0.7);
+ left: 170px;
+ top: 20px;
+}
+
+/* Cuerdas de los globos */
+.balloonOne:before,
+.balloonTwo:before,
+.balloonThree:before,
+.balloonFour:before {
+ content: "";
+ position: absolute;
+ width: 1px;
+ height: 155px;
+ background-color: #ffd166;
+ top: 95px;
+ left: 43px;
+}
+
+/* Nudos de globos */
+.balloonOne:after,
+.balloonTwo:after,
+.balloonThree:after,
+.balloonFour:after {
+ content: "";
+ position: absolute;
+ border-right: 7px solid transparent;
+ border-left: 7px solid transparent;
+ top: 94px;
+ left: 37px;
+}
+
+/* Colores del nudo */
+.balloonOne:after { border-bottom: 10px solid #ef476f; }
+.balloonTwo:after { border-bottom: 10px solid #06d6a0; }
+.balloonThree:after { border-bottom: 10px solid #ffd166; }
+.balloonFour:after { border-bottom: 10px solid #118ab2; }
+
+/* ============================= */
+/* PASTEL */
+/* ============================= */
+
+.plate {
+  position: absolute;
+  width: 130px;
+  height: 5px;
+  background-color: #843a24;
+  left: 60px;
+  top: 320px;
+}
+
+/* Cuerpo del pastel */
+.cake {
+  position: absolute;
+  overflow: hidden;
+  width: 100px;
+  height: 50px;
+  background-color: #f0199a;
+  border-radius: 10px 10px 0 0;
+  top: -50px;
+  left: 15px;
+  box-shadow: inset 0 -15px #f9824f, inset 0 15px #472511;
+}
+
+/* Decoración del pastel */
+.cake:before {
+  content: "";
+  position: absolute;
+  background-color: #432818;
+  width: 10px;
+  height: 20px;
+  top: 5px;
+  border-radius: 20px;
+  box-shadow: 10px 5px #f0acd5, 20px 0px #432818,
+              30px 2px #f15bb5, 40px 5px #432818,
+              50px 5px #dba8c7, 60px 0px #432818,
+              70px 5px #f15bb5, 80px 5px #432818,
+              90px 5px #ca9eb8;
+}
+
+/* Vela */
+.plate:before {
+  content: "";
+  position: absolute;
+  background: repeating-linear-gradient(
+    -45deg,
+    #7300ff,
+    #7300ff 3px,
+    #00ffdd 3px,
+    #00f5d4 6px
+  );
+  width: 7px;
+  height: 25px;
+  top: -75px;
+  left: 61px;
+}
+
+/* Base de la vela */
+.plate:after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 5px;
+  background-color: #333;
+  top: -80px;
+  left: 64px;
+}
+
+/* 🔥 FLAMA */
+.flame {
+    position: absolute;
+    background-color: #ff5100;
+    border: 1px solid #ffa500;
+    border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+    transform: rotate(-45deg);
+    width:15px;
+    height:15px;
+    opacity:0.7;
+    top:-93px;
+    left:56px;
+    box-shadow: 0px 0px 2px 2px #ff652edb;
+    animation: flame 30ms 200ms ease-in infinite alternate;
+}
+
+/* Animación de la flama */
+@keyframes flame {
+    0%{ transform: rotate(-45deg); }
+    20%{ transform: rotate(-50deg); }
+    40%{ transform: rotate(-44deg); }
+    60%{ transform: rotate(-45deg) scaleY(1.04); }
+    80%{ transform: rotate(-47deg) scaleY(0.92); }
+    100%{ transform: rotate(-50deg); }
+}
+
+/* ============================= */
+/* INTERIOR DE LA TARJETA */
+/* ============================= */
+
+.cardInside {
+ position: absolute;
+ background-color: #F7879A;
+ width: 250px;
+ height: 350px;
+ z-index: 1;
+ left: 0;
+ top: 0;
+ box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2);
+ border: 2px solid gold;
+ border-left: 2px dashed gold; 
+}
+
+/* Texto general */
+p {
+ font-family: cursive;
+ margin: 2px 8px 8px 18px;
+ color: #000;
+}
+
+/* Descripción con scroll oculto */
+#desc{
+    font-size: medium;
+    position: relative;
+    height: 210px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+}
+
+/* Oculta scrollbar */
+#desc::-webkit-scrollbar {
+    display: none;
+}
+
+/* Firma */
+.name {
+ position: fixed;
+ right: 0px;
+ text-align: right;
+ color: #333;
+ text-decoration: underline;
+}
+
+/* Título interno */
+.back {
+ font-family: Tahoma, sans-serif;
+ color: #333;
+ text-align: center;
+ margin: 20px;
+ outline-color: #333;
+ outline-style: dashed;
+}
+
+/* ============================= */
+/* EFECTO HOVER (RESPONSABLE DE LA APERTURA) */
+/* ============================= */
+
+.birthdayCard:hover {
+ transform: perspective(2500px) rotate(5deg);
+}
+
+/* ESTE ES EL QUE ABRE LA TARJETA */
+.birthdayCard:hover .card-inner {
+  transform: rotateY(-160deg);
+}
+
+/* ============================= */
+/* ANIMACIONES */
+/* ============================= */
+
+/* Texto parpadeante */
+@keyframes blink {
+ 0% { color: white; }
+ 20% { color: yellow; }
+ 40% { color: greenyellow; }
+ 60% { color: red; }
+ 80% { color: hotpink; }
+ 100% { color: blue; }
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media screen and (max-width: 820px) {
+  .body:hover {
+    transform: translate(calc(-100% + 210px), -50%);
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .body:hover {
+    transform: translate(calc(-100% + 320px), -50%);
+  }
+}
