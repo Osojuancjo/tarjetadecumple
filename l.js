@@ -20,13 +20,17 @@ let locked = false;
 let heartInterval = null;
 
 // ✍️ TYPEWRITER
-function typeWriter() {
-  if (i < text.length) {
-    textElement.innerHTML += text.charAt(i);
+function typeWriter(){
+  if(i < text.length){
+
+    if(text.charAt(i) === "\n"){
+      textElement.innerHTML += "<br>";
+    } else {
+      textElement.innerHTML += text.charAt(i);
+    }
+
     i++;
     setTimeout(typeWriter, 40);
-  } else {
-    typing = false;
   }
 }
 
