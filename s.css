@@ -7,8 +7,9 @@
 body, html {
 margin: 0;
 padding: 0;
-height: 100vh;
-overflow: hidden;
+min-height: 100vh;
+overflow-x: hidden;
+overflow-y: auto;
 font-family: sans-serif;
 }
 
@@ -21,13 +22,22 @@ radial-gradient(circle at 70% 70%, #001f3f, transparent 60%);
 /* CONTENEDOR PRINCIPAL */
 /* ============================= */
 
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+/* contenedor principal */
 .body {
-position: absolute;
-top: 35%;
-left: 50%;
-transform: translate(-50%, -50%);
-transition: transform 0.5s ease;
-z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h2 {
@@ -42,8 +52,8 @@ justify-content: center;
 
 .birthdayCard {
 position: relative;
-width: 260px;
-height: 360px;
+  width: min(90vw, 260px);
+  height: calc(min(90vw, 260px) * 1.38);
 cursor: pointer;
 transform: perspective(2500px);
 transition: all 0.6s ease;
@@ -51,7 +61,13 @@ box-shadow:
 0 0 30px rgba(255, 0, 150, 0.2),
 0 0 60px rgba(0, 200, 255, 0.1);
 }
-
+.card,
+.cardFront,
+.cardInside,
+.card-back {
+  width: 100%;
+  height: 100%;
+}
 .birthdayCard {
   transition: transform 0.6s cubic-bezier(.68,-0.55,.27,1.55);
 }
@@ -66,10 +82,10 @@ transform: rotateY(-160deg);
   transform: perspective(2500px) rotate(5deg) scale(0.85);
 }
 
-/* 💻 Ajuste especial para móviles */
+/* 📱 móviles */
 @media (max-width: 600px) {
   .birthdayCard.open {
-    transform: perspective(2500px) rotate(5deg) scale(0.75);
+    transform: perspective(2500px) rotate(5deg) scale(0.7);
   }
 }
 
